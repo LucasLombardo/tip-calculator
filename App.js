@@ -9,20 +9,22 @@ export default class App extends React.Component {
     }
   }
 
-
-
-
   render() {
-    let tip = '0.00';
+    let tip = '0.00',
+      total = '0.00';
     if(this.state.inputValue) {
       tip = parseFloat(this.state.inputValue) * 0.20;
       tip = (Math.round(tip * 100) / 100).toFixed(2);
+      total = (parseFloat(tip) + parseFloat(this.state.inputValue)).toFixed(2);
     }
 
     return (
       <View style={styles.container}>
         <Text>
-          ${tip}
+          Tip Amount: ${tip}
+        </Text>
+        <Text>
+          Total: ${total}
         </Text>
         <TextInput 
           value={this.state.inputValue}
